@@ -3,10 +3,8 @@ package com.example.Spring.boot.learn.service.impl;
 import com.example.Spring.boot.learn.service.BluePrinter;
 import org.springframework.stereotype.Component;
 
-@Component
-public class EnglishBluePrinter implements BluePrinter {
-    @Override
+public class MmBluePrinter implements BluePrinter {
     public String print() {
-        return "Blue Color";
+        return "a pyar";
     }
 }
