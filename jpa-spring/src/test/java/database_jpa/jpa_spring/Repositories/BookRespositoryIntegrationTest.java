@@ -34,4 +34,35 @@ public class BookRespositoryIntegrationTest {
 
         assertThat(result.isPresent()).isTrue();
     }
+
+    @Test
+    public void testThatBookCanBeUpdatedAndRecalled() {
+        Author author = AuthorTestUlits.getCreateTestAuthor();
+        System.out.println(author + "author");
+        final String ISBN = "HELO";
+        Book book = BookTestUlits.createRandomBooks(author);
+        book.setIsbn(ISBN);
+        underTest.save(book);
+        Book newBook = BookTestUlits.createRandomBooks(author);
+        newBook.setIsbn(ISBN);
+        newBook.setTitle("update ==>");
+        underTest.save(newBook);
+
+        Optional<Book> result = underTest.findById(book.getIsbn());
+        Iterable<Book> results = underTest.findAll();
+
+        assertThat(result.isPresent()).isTrue();
+        assertThat(results).hasSize(1);
+    }
+
+    @Test
+    public void testThatBookCanBeDeletedAndRecalled() {
+        Author author = AuthorTestUlits.getCreateTestAuthor();
+        Book book = BookTestUlits.createRandomBooks(author);
+        underTest.save(book);
+        underTest.deleteById(book.getIsbn());
+
+        Iterable<Book> results = underTest.findAll();
+        assertThat(results).hasSize(0).doesNotContain(book);
+    }
 }
