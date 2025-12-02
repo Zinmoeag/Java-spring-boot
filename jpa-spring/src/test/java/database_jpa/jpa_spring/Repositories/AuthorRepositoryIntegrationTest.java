@@ -68,20 +68,21 @@ public class AuthorRepositoryIntegrationTest {
         assertThat(authorsList).doesNotContain(author);
     }
 
-//    @Test
-//    public void testThatAuthorCanBeDeleted() {
-//        Authors author = AuthorTestUlits.getCreateTestAuthor();
-//        underTest.create(author);
-//
-//        Authors author1 = AuthorTestUlits.createRamdomTestAuthor();
-//        underTest.create(author1);
-//
-//        Authors author2 =  AuthorTestUlits.createRamdomTestAuthor();
-//        underTest.create(author2);
-//
-//        underTest.delete(author.getId());
-//
-//        List<Authors> results = underTest.find();
-//        assertThat(results).hasSize(2).doesNotContain(author);
-//    }
+    @Test
+    public void testThatAuthorCanBePickByAge() {
+        Author author = AuthorTestUlits.createRamdomTestAuthor();
+        author.setAge(50);
+        underTest.save(author);
+
+        Author author2 = AuthorTestUlits.createRamdomTestAuthor();
+        author2.setAge(20);
+        underTest.save(author2);
+
+        Author author3 = AuthorTestUlits.createRamdomTestAuthor();
+        author3.setAge(80);
+        underTest.save(author3);
+
+        Iterable<Author> results = underTest.ageLessThan(40);
+        assertThat(results).hasSize(1).contains(author2);
+    }
 }

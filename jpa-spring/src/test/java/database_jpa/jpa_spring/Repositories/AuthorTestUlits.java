@@ -7,7 +7,7 @@ import java.util.Random;
 public class AuthorTestUlits {
     public static Author getCreateTestAuthor() {
         return Author.builder()
-                .id(Math.abs(new Random().nextLong()))
+//                .id(Math.abs(new Random().nextLong()))
                 .name("Abigail Rose")
                 .age(80)
                 .build();
@@ -15,9 +15,9 @@ public class AuthorTestUlits {
 
     public static Author createRamdomTestAuthor() {
         return Author.builder()
-                .id(Math.abs(new Random().nextLong()))
+//                .id(Math.abs(new Random().nextLong()))
                 .name("name ")
-                .age(80)
+                .age(new Random().nextInt(100))
                 .build();
     }
 
