@@ -38,6 +38,14 @@ public class AuthorDAO implements IAuthorDAO {
     }
 
     @Override
+    public void delete(long id) {
+        jdbcTemplate.update(
+                "DELETE FROM authors WHERE id = ?",
+                id
+        );
+    }
+
+    @Override
     public Optional<Authors> findById(Long id) {
         List<Authors> rs = jdbcTemplate.query(
                 "SELECT id, name, age FROM authors WHERE id = ? LIMIT 1",

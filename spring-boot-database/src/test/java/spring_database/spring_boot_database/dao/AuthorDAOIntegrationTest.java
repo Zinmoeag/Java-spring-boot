@@ -64,4 +64,21 @@ public class AuthorDAOIntegrationTest {
         assertThat(authorsList).hasSize(1);
         assertThat(authorsList).doesNotContain(author);
     }
+
+    @Test
+    public void testThatAuthorCanBeDeleted() {
+        Authors author = AuthorTestUlits.getCreateTestAuthor();
+        underTest.create(author);
+
+        Authors author1 = AuthorTestUlits.createRamdomTestAuthor();
+        underTest.create(author1);
+
+        Authors author2 =  AuthorTestUlits.createRamdomTestAuthor();
+        underTest.create(author2);
+
+        underTest.delete(author.getId());
+
+        List<Authors> results = underTest.find();
+        assertThat(results).hasSize(2).doesNotContain(author);
+    }
 }

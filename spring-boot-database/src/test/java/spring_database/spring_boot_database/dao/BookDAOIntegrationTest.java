@@ -77,4 +77,23 @@ public class BookDAOIntegrationTest {
         assertThat(bookResult.isPresent()).isTrue();
         assertThat(results).hasSize(1).contains(newBook);
     }
+
+    @Test
+    public void testThatBookCanBeDeleted() {
+        Authors author = AuthorTestUlits.createRamdomTestAuthor();
+        authorDAO.create(author);
+
+        Books book = BookTestUlits.createRandomBooks(author.getId());
+        underTest.create(book);
+        Books book1 = BookTestUlits.createRandomBooks(author.getId());
+        underTest.create(book1);
+        Books book2 = BookTestUlits.createRandomBooks(author.getId());
+        underTest.create(book2);
+
+        underTest.delete(book.getIsbn());
+        List<Books> results = underTest.findAll();
+        System.out.println(results.toString());
+
+        assertThat(results).hasSize(2).doesNotContain(book);
+    }
 }

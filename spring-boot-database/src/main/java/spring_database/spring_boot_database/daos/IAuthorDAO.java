@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface IAuthorDAO {
     void create(Authors author);
     void update(long l, Authors author);
+    void delete(long id);
 
     Optional<Authors> findById(Long id);
 

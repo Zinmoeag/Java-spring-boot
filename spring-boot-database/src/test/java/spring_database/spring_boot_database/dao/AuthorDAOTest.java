@@ -64,4 +64,13 @@ public class AuthorDAOTest {
                 eq(author.getId()), eq(author.getName()), eq(author.getAge()), eq(3L)
         );
     }
+
+    @Test
+    public void testThatDeleteAuthorGeneratesCorrectSql() {
+        underTest.delete(1L);
+        verify(jdbcTemplate).update(
+                eq("DELETE FROM authors WHERE id = ?"),
+                eq(1L)
+        );
+    }
 }

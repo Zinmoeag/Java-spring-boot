@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface IBookDAO {
     void create(Books books);
     void update(String id, Books book);
+    void delete(String isbn);
     Optional<Books> findById(String isbn);
     List<Books> findAll();
 

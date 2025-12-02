@@ -66,4 +66,13 @@ public class BookDAOTest {
                 eq(book.getIsbn()), eq(book.getTitle()), eq(book.getAuthor_id()), eq("hello")
         );
     }
+
+    @Test
+    public void testThatDeleteBookUpdateGenerateSql() {
+        underTest.delete("hello");
+        verify(jdbcTemplate).update(
+                eq("DELETE FROM books WHERE isbn = ?"),
+                eq("hello")
+        );
+    }
 }
