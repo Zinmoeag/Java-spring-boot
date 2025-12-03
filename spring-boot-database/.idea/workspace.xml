@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a3dff857-73bc-48a0-bf6a-b80f3c8f657a" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dockerfile" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Zinmoeag&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Zinmoeag/Java-spring-boot.git&quot;,
+    &quot;accountId&quot;: &quot;27c28392-6eb6-4bf6-a42c-f8d064eae194&quot;
+  }
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="366GZHxy1fWwcvzO4PoTx0fbk22" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.SpringBootDatabaseApplication.executor": "Run",
+    "JUnit.AuthorDAOIntegrationTest.executor": "Run",
+    "JUnit.AuthorDAOIntegrationTest.testThatAuthorCanBeCreateManyAndRecaledMany.executor": "Run",
+    "JUnit.AuthorDAOIntegrationTest.testThatAuthorCanBeCreatedAndRecalled.executor": "Run",
+    "JUnit.AuthorDAOIntegrationTest.testThatAuthorCanBeDeleted.executor": "Run",
+    "JUnit.AuthorDAOIntegrationTest.testThatAuthorCanBeUpdateAndRecalled.executor": "Run",
+    "JUnit.AuthorDAOTest (1).executor": "Run",
+    "JUnit.AuthorDAOTest.executor": "Run",
+    "JUnit.AuthorDAOTest.testThatCreateAuthorGeneratesCorrectSql.executor": "Run",
+    "JUnit.AuthorDAOTest.testThatDeleteAuthorGeneratesCorrectSql.executor": "Run",
+    "JUnit.AuthorDAOTest.testThatFindByIdAuthorGeneratesCorrectSql.executor": "Run",
+    "JUnit.AuthorDAOTest.testThatFindCorrectSql.executor": "Run",
+    "JUnit.AuthorDAOTest.testThatUpdateAuthorGeneratesCorrectSql.executor": "Run",
+    "JUnit.BookDAOIntegrationTest.executor": "Run",
+    "JUnit.BookDAOIntegrationTest.testThatBookCanBeDeleted.executor": "Run",
+    "JUnit.BookDAOIntegrationTest.testThatBookCreateAndRecalled.executor": "Run",
+    "JUnit.BookDAOIntegrationTest.testThatBookCreateManyAndRecalledMany.executor": "Run",
+    "JUnit.BookDAOIntegrationTest.testThatBookUpdateAndRecalled.executor": "Run",
+    "JUnit.BookDAOTest.executor": "Run",
+    "JUnit.BookDAOTest.testThatDeleteBookUpdateGenerateSql.executor": "Run",
+    "JUnit.BookDAOTest.testThatFindAllGenerateSql.executor": "Run",
+    "JUnit.BookDAOTest.testThatFindOneGenerateSql.executor": "Run",
+    "JUnit.BookDAOTest.testThatUpdateBookUpdateGenerateSql.executor": "Run",
+    "JUnit.SpringBootDatabaseApplicationTests.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "jpa-database",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/projects/java-spring-boot-learn/spring-boot-database"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\projects\java-spring-boot-learn\spring-boot-database" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.BookDAOIntegrationTest.testThatBookCanBeDeleted">
+    <configuration name="AuthorDAOIntegrationTest.testThatAuthorCanBeDeleted" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-boot-database" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="spring_database.spring_boot_database.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="spring_database.spring_boot_database.dao" />
+      <option name="MAIN_CLASS_NAME" value="spring_database.spring_boot_database.dao.AuthorDAOIntegrationTest" />
+      <option name="METHOD_NAME" value="testThatAuthorCanBeDeleted" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuthorDAOTest.testThatDeleteAuthorGeneratesCorrectSql" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-boot-database" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="spring_database.spring_boot_database.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="spring_database.spring_boot_database.dao" />
+      <option name="MAIN_CLASS_NAME" value="spring_database.spring_boot_database.dao.AuthorDAOTest" />
+      <option name="METHOD_NAME" value="testThatDeleteAuthorGeneratesCorrectSql" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookDAOIntegrationTest.testThatBookCanBeDeleted" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-boot-database" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="spring_database.spring_boot_database.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="spring_database.spring_boot_database.dao" />
+      <option name="MAIN_CLASS_NAME" value="spring_database.spring_boot_database.dao.BookDAOIntegrationTest" />
+      <option name="METHOD_NAME" value="testThatBookCanBeDeleted" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookDAOIntegrationTest.testThatBookUpdateAndRecalled" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-boot-database" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="spring_database.spring_boot_database.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="spring_database.spring_boot_database.dao" />
+      <option name="MAIN_CLASS_NAME" value="spring_database.spring_boot_database.dao.BookDAOIntegrationTest" />
+      <option name="METHOD_NAME" value="testThatBookUpdateAndRecalled" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BookDAOTest.testThatDeleteBookUpdateGenerateSql" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spring-boot-database" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="spring_database.spring_boot_database.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="spring_database.spring_boot_database.dao" />
+      <option name="MAIN_CLASS_NAME" value="spring_database.spring_boot_database.dao.BookDAOTest" />
+      <option name="METHOD_NAME" value="testThatDeleteBookUpdateGenerateSql" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BookDAOIntegrationTest.testThatBookCanBeDeleted" />
+        <item itemvalue="JUnit.BookDAOTest.testThatDeleteBookUpdateGenerateSql" />
+        <item itemvalue="JUnit.AuthorDAOIntegrationTest.testThatAuthorCanBeDeleted" />
+        <item itemvalue="JUnit.AuthorDAOTest.testThatDeleteAuthorGeneratesCorrectSql" />
+        <item itemvalue="JUnit.BookDAOIntegrationTest.testThatBookUpdateAndRecalled" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.28238.7" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a3dff857-73bc-48a0-bf6a-b80f3c8f657a" name="Changes" comment="" />
+      <created>1764319661783</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1764319661783</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/spring_database/spring_boot_database/dao/AuthorDAOIntegrationTest.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/spring_database/spring_boot_database/dao/AuthorDAOTest.java</url>
+          <line>48</line>
+          <properties class="spring_database.spring_boot_database.dao.AuthorDAOTest" method="testThatFindCorrectSql">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/spring_database/spring_boot_database/dao/BookDAOIntegrationTest.java</url>
+          <line>47</line>
+          <properties class="spring_database.spring_boot_database.dao.BookDAOIntegrationTest" method="testThatBookCreateManyAndRecalledMany">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/spring_database/spring_boot_database/dao/AuthorDAOTest.java</url>
+          <line>57</line>
+          <properties class="spring_database.spring_boot_database.dao.AuthorDAOTest" method="testThatUpdateAuthorGeneratesCorrectSql">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/spring_database/spring_boot_database/dao/AuthorDAOIntegrationTest.java</url>
+          <line>51</line>
+          <properties class="spring_database.spring_boot_database.dao.AuthorDAOIntegrationTest" method="testThatAuthorCanBeUpdateAndRecalled">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
