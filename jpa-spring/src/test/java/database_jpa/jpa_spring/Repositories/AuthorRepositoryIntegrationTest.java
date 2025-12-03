@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import tools.jackson.databind.ObjectMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -84,5 +86,13 @@ public class AuthorRepositoryIntegrationTest {
 
         Iterable<Author> results = underTest.ageLessThan(40);
         assertThat(results).hasSize(1).contains(author2);
+    }
+
+    @Test
+    public void playground() {
+        ArrayList<Integer> list = new ArrayList<Integer>();
+
+        list.add(1);
+        list.add(8);
     }
 }
