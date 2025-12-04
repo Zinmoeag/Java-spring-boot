@@ -48,6 +48,8 @@ public class CompanyControllerIntegrationTest {
                         .content(companyJson)
         ).andExpect(
                 MockMvcResultMatchers.status().isCreated()
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.name").value("Company 1")
         );
     }
 
