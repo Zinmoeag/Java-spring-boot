@@ -1,6 +1,8 @@
 package com.jobapi.jobapi.controllers;
 
 import com.jobapi.jobapi.domains.entities.JobEntity;
+import com.jobapi.jobapi.services.IJobService;
+import com.jobapi.jobapi.services.JobService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,16 +23,20 @@ import tools.jackson.databind.ObjectMapper;
 public class JobControllerIntegrationTest {
 
     private MockMvc mockMvc;
+    private IJobService  jobService;
     private ObjectMapper objectMapper;
 
     @Autowired
-    public JobControllerIntegrationTest(MockMvc mockMvc, ObjectMapper objectMapper) {
+    public JobControllerIntegrationTest(MockMvc mockMvc, ObjectMapper objectMapper, IJobService jobService) {
         this.mockMvc = mockMvc;
         this.objectMapper = objectMapper;
+        this.jobService = jobService;
     }
 
     @Test
     public void testThatJobControllerCanBeCreated() throws Exception {
+
+
         JobEntity jobEntity = JobEntity
                 .builder()
                 .title("Job Title")
@@ -52,6 +58,27 @@ public class JobControllerIntegrationTest {
                 MockMvcResultMatchers.jsonPath("$.description").value("Job Description")
         ).andExpect(
                 MockMvcResultMatchers.jsonPath("$.email").value("Job Email")
+        );
+    }
+
+    @Test
+    public void testThatJobFindAllControllerCanBeUpdated() throws Exception {
+        JobEntity newJob = JobEntity.builder()
+                .title("hello melo")
+                .description("descrtipn")
+                .email("helo mello")
+                .company(null)
+                .build();
+
+        jobService.create(newJob);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/jobs")
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(
+                MockMvcResultMatchers.status().isOk()
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$[0].title").value("hello melo")
         );
     }
 }

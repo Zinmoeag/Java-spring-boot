@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Controller
 public class JobController {
     private final JobMapper jobMapper;
@@ -29,5 +32,12 @@ public class JobController {
         JobEntity result = jobService.create(jobEntity);
         JobDTO responseDTO = jobMapper.mapTo(result);
         return new ResponseEntity<JobDTO>(responseDTO, HttpStatus.CREATED);
+    }
+
+    @GetMapping(path = "/jobs")
+    public ResponseEntity<List<JobDTO>> getAllJobs() {
+        List<JobEntity> results = jobService.findAll();
+        List<JobDTO> jobDTOS = results.stream().map(jobMapper::mapTo).collect(Collectors.toList());
+        return new ResponseEntity<>(jobDTOS, HttpStatus.OK);
     }
 }
