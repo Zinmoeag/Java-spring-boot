@@ -1,5 +1,6 @@
 package com.jobapi.jobapi.controllers;
 
+import com.jobapi.jobapi.domains.dtos.JobDTO;
 import com.jobapi.jobapi.domains.entities.CompanyEntity;
 import com.jobapi.jobapi.domains.entities.JobEntity;
 import com.jobapi.jobapi.services.IJobService;
@@ -163,6 +164,35 @@ public class JobControllerIntegrationTest {
             MockMvcRequestBuilders.delete("/jobs/" + existedJobEntity.getId())
         ).andExpect(
                 MockMvcResultMatchers.status().is2xxSuccessful()
+        );
+    }
+
+    @Test
+    public void testThatJobCanbePartialyUpdateIfJobIsAlreadyExists() throws Exception {
+
+        JobEntity existedJobEntity = JobEntity.builder()
+                .title("hello melo")
+                .description("descrtipn")
+                .email("helo mello")
+                .build();
+
+        jobService.create(existedJobEntity);
+
+        JobDTO updateJob = JobDTO.builder()
+                .title("new job")
+                .build();
+        String updateJobJson = objectMapper.writeValueAsString(updateJob);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.patch("/jobs/" + existedJobEntity.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(updateJobJson)
+        ).andExpect(
+                MockMvcResultMatchers.status().isOk()
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.title").value("new job")
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.description").value("descrtipn")
         );
     }
 }

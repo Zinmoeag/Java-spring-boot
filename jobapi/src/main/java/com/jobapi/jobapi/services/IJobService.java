@@ -16,5 +16,7 @@ public interface IJobService {
 
     JobEntity update(Long id, JobEntity jobEntity) throws Exception;
 
+    JobEntity partialUpdate(Long id, JobEntity jobEntity) throws Exception;
+
     void delete(Long id) throws Exception;
 }

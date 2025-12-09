@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -46,6 +47,17 @@ public class JobService implements IJobService {
     public JobEntity update(Long id, JobEntity jobEntity) throws Exception {
         if(!isExist(id)) throw new Exception("it is already exist");
         return jobRespository.save(jobEntity);
+    }
+
+    @Override
+    public JobEntity partialUpdate(Long id, JobEntity jobEntity) throws Exception {
+        return jobRespository.findById(id).map(existedJob -> {
+            Optional.ofNullable(jobEntity.getTitle()).ifPresent(existedJob::setTitle);
+            Optional.ofNullable(jobEntity.getEmail()).ifPresent(existedJob::setEmail);
+            Optional.ofNullable(jobEntity.getCompany()).ifPresent(existedJob::setCompany);
+            Optional.ofNullable(jobEntity.getDescription()).ifPresent(existedJob::setDescription);
+            return jobRespository.save(existedJob);
+        }).orElseThrow(() ->  new RuntimeException("Job is not exist"));
     }
 
     public void delete(Long id) {

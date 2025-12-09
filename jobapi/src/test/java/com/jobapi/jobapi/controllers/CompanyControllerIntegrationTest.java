@@ -1,5 +1,6 @@
 package com.jobapi.jobapi.controllers;
 
+import com.jobapi.jobapi.domains.dtos.CompanyDTO;
 import com.jobapi.jobapi.domains.entities.CompanyEntity;
 import com.jobapi.jobapi.services.CompanyService;
 import org.junit.jupiter.api.Test;
@@ -126,6 +127,35 @@ public class CompanyControllerIntegrationTest {
                         .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(
                 MockMvcResultMatchers.status().is2xxSuccessful()
+        );
+    }
+
+    @Test
+    public void testThatCompanyCanBePartialUpdateifAlreadyExist() throws Exception {
+        CompanyEntity companyEntity = CompanyEntity.builder()
+                .name("Company 1")
+                .address("Address 1")
+                .email("email@gmail.com")
+                .build();
+        CompanyEntity result =  companyService.save(companyEntity);
+
+        CompanyDTO updateCompanyDto = CompanyDTO.builder()
+                .name("Company updated")
+                .build();
+        String json = objectMapper.writeValueAsString(updateCompanyDto);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.patch("/companies/" + result.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json)
+        ).andExpect(
+                MockMvcResultMatchers.status().isOk()
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.name").value("Company updated")
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.address").value("Address 1")
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.email").value("email@gmail.com")
         );
     }
 }

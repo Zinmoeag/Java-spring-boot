@@ -48,7 +48,6 @@ public class JobController {
 
     @PostMapping(path = "/jobs/{id}")
     public ResponseEntity<JobDTO> updateJob(@PathVariable Long id, @RequestBody JobDTO jobDTO) {
-
         if(!jobService.isExist(id)) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
@@ -57,6 +56,17 @@ public class JobController {
         JobEntity jobEntity = jobMapper.mapFrom(jobDTO);
         JobEntity createJob = jobService.create(jobEntity);
         return new ResponseEntity<JobDTO>(jobMapper.mapTo(createJob), HttpStatus.OK);
+    }
+
+    @PatchMapping(path = "/jobs/{id}")
+    public ResponseEntity<JobDTO> partialUpdateJob(@PathVariable Long id, @RequestBody JobDTO jobDTO) throws Exception {
+        if(!jobService.isExist(id)) return new ResponseEntity(HttpStatus.NOT_FOUND);
+        jobDTO.setId(id);
+        JobEntity jobEntity = jobMapper.mapFrom(jobDTO);
+        return new ResponseEntity<>(
+                jobMapper.mapTo(jobService.partialUpdate(id, jobEntity))
+                , HttpStatus.OK
+        );
     }
 
     @DeleteMapping(path = "/jobs/{id}")

@@ -60,4 +60,12 @@ public class CompanyController {
         companyService.delete(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
+
+    @PatchMapping(path = "/companies/{id}")
+    public ResponseEntity<CompanyDTO> partialCompany(@PathVariable Long id, @RequestBody CompanyDTO companyDTO) throws Exception {
+        if (!companyService.isExist(id)) new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        CompanyEntity companyEntity = companyMapper.mapFrom(companyDTO);
+        CompanyEntity updatedCompanyEntity = companyService.partialUpdate(id, companyEntity);
+        return new ResponseEntity<CompanyDTO>(companyMapper.mapTo(updatedCompanyEntity), HttpStatus.OK);
+    }
 }

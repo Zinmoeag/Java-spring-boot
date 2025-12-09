@@ -14,5 +14,7 @@ public interface ICompanyService {
 
     CompanyEntity update(Long id, CompanyEntity company) throws Exception;
 
+    CompanyEntity partialUpdate(Long id, CompanyEntity company) throws Exception;
+
     void delete(Long id) throws Exception;
 }
