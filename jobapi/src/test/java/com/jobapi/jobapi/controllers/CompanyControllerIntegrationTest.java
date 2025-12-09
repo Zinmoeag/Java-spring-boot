@@ -1,6 +1,7 @@
 package com.jobapi.jobapi.controllers;
 
 import com.jobapi.jobapi.domains.entities.CompanyEntity;
+import com.jobapi.jobapi.services.CompanyService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +25,13 @@ public class CompanyControllerIntegrationTest {
 
     private MockMvc mockMvc;
     private ObjectMapper objectMapper;
+    private CompanyService companyService;
 
     @Autowired
-    public CompanyControllerIntegrationTest(ObjectMapper objectMapper, MockMvc mockMvc) {
+    public CompanyControllerIntegrationTest(ObjectMapper objectMapper, MockMvc mockMvc,  CompanyService companyService) {
         this.objectMapper = objectMapper;
         this.mockMvc = mockMvc;
+        this.companyService = companyService;
     }
 
     @Test
@@ -62,6 +65,8 @@ public class CompanyControllerIntegrationTest {
                 .phone("123456789")
                 .build();
 
+        companyService.save(company);
+
         MockMvcRequestBuilders.post("/companies")
             .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(company));
@@ -73,6 +78,54 @@ public class CompanyControllerIntegrationTest {
                 MockMvcResultMatchers.status().isOk()
         ).andExpect(
                 MockMvcResultMatchers.jsonPath("$[0].name").value("Company 1")
+        );
+    }
+
+    @Test
+    public void testThatCompaniesCanBeUpdateIftisisExist() throws Exception {
+        CompanyEntity companyEntity = CompanyEntity.builder()
+                .name("Company 1")
+                .address("Address 1")
+                .email("email")
+                .build();
+        CompanyEntity insertResult = companyService.save(companyEntity);
+
+        CompanyEntity newCompanyEntity = CompanyEntity.builder()
+                        .name("company 2")
+                                .address("addresss")
+                                        .email("email")
+                                                .build();
+        String json = objectMapper.writeValueAsString(newCompanyEntity);
+        System.out.println(json + "josn ===============================");
+
+        mockMvc.perform(
+            MockMvcRequestBuilders.post("/companies/" + insertResult.getId())
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .content(json)
+        ).andExpect(
+                MockMvcResultMatchers.status().isOk()
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.name").value("company 2")
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.address").value("addresss")
+        );
+    }
+
+    @Test
+    public void testThatCompanyCanBeDeletedifExist() throws Exception {
+        CompanyEntity companyEntity = CompanyEntity.builder()
+                .name("Company 1")
+                .address("Address 1")
+                .email("email")
+                .build();
+
+        CompanyEntity createCompanyEntity = companyService.save(companyEntity);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.delete("/companies/" + createCompanyEntity.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(
+                MockMvcResultMatchers.status().is2xxSuccessful()
         );
     }
 }

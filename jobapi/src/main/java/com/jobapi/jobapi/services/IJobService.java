@@ -9,4 +9,12 @@ public interface IJobService {
     public JobEntity create(JobEntity jobEntity);
 
     List<JobEntity> findAll();
+
+    JobEntity findById(Long id);
+
+    boolean isExist(Long jobId);
+
+    JobEntity update(Long id, JobEntity jobEntity) throws Exception;
+
+    void delete(Long id) throws Exception;
 }

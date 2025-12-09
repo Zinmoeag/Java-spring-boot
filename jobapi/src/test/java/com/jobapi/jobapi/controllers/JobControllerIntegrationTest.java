@@ -1,5 +1,6 @@
 package com.jobapi.jobapi.controllers;
 
+import com.jobapi.jobapi.domains.entities.CompanyEntity;
 import com.jobapi.jobapi.domains.entities.JobEntity;
 import com.jobapi.jobapi.services.IJobService;
 import com.jobapi.jobapi.services.JobService;
@@ -35,8 +36,6 @@ public class JobControllerIntegrationTest {
 
     @Test
     public void testThatJobControllerCanBeCreated() throws Exception {
-
-
         JobEntity jobEntity = JobEntity
                 .builder()
                 .title("Job Title")
@@ -79,6 +78,91 @@ public class JobControllerIntegrationTest {
                 MockMvcResultMatchers.status().isOk()
         ).andExpect(
                 MockMvcResultMatchers.jsonPath("$[0].title").value("hello melo")
+        );
+    }
+
+    @Test
+    public void testThatJobFindByIdControllerCanBeRecalled() throws Exception {
+        JobEntity jobEntity = JobEntity.builder()
+                .title("hello melo")
+                .description("descrtipn")
+                .email("helo mello")
+                .build();
+        jobService.create(jobEntity);
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.get("/jobs/{id}", 1)
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(
+                MockMvcResultMatchers.status().isOk()
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.title").value("hello melo")
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.description").value("descrtipn")
+        ).andExpect(
+                MockMvcResultMatchers.jsonPath("$.email").value("helo mello")
+        );
+    }
+
+    @Test
+    public void testThatJobCanbeUpdateIfJobIsAlreadyExists() {
+        JobEntity existedJob = JobEntity.builder()
+                .title("hello melo")
+                .description("descrtipn")
+                .email("helo mello")
+                .build();
+
+        CompanyEntity existedCompany = CompanyEntity
+                .builder()
+                .name("hello company")
+                .phone("123456789")
+                .address(null)
+                .email("hello company")
+                .build();
+        jobService.create(existedJob);
+
+        JobEntity newJobEntity = JobEntity.builder()
+                        .title("new job")
+                        .description("new job")
+                        .email("hello mello")
+                        .company(null)
+                        .build();
+
+        String newJobJson = objectMapper.writeValueAsString(newJobEntity);
+        try {
+            mockMvc.perform(
+                    MockMvcRequestBuilders.post("/jobs/" + existedJob.getId())
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(newJobJson)
+            ).andExpect(
+                    MockMvcResultMatchers.status().isOk()
+            ).andExpect(
+                    MockMvcResultMatchers.jsonPath("$.title").value("new job")
+            ).andExpect(
+                    MockMvcResultMatchers.jsonPath("$.description").value("new job")
+            );
+
+        } catch (Exception e) {
+            System.out.println(e + "=============================");
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    public void testThatJobCanbeDeleteIfJobIsNotExists() throws Exception {
+        JobEntity existedJobEntity = JobEntity.builder()
+                .title("hello melo")
+                .description("descrtipn")
+                .email("helo mello")
+                .company(null)
+                .build();
+
+        jobService.create(existedJobEntity);
+
+        mockMvc.perform(
+            MockMvcRequestBuilders.delete("/jobs/" + existedJobEntity.getId())
+        ).andExpect(
+                MockMvcResultMatchers.status().is2xxSuccessful()
         );
     }
 }

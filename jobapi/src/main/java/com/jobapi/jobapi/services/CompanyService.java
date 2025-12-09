@@ -11,7 +11,7 @@ import java.util.stream.StreamSupport;
 @Service
 public class CompanyService implements ICompanyService {
 
-    private ICompanyRespository companyRespository;
+    private final ICompanyRespository companyRespository;
 
     public CompanyService(ICompanyRespository companyRespository) {
         this.companyRespository = companyRespository;
@@ -26,5 +26,26 @@ public class CompanyService implements ICompanyService {
     public List<CompanyEntity> findAll() {
         Iterable<CompanyEntity> results = companyRespository.findAll();
         return StreamSupport.stream(results.spliterator(), false).collect(Collectors.toList());
+    }
+
+    @Override
+    public CompanyEntity findById(Long id) {
+        return companyRespository.findById(id).get();
+    }
+
+    @Override
+    public boolean isExist(Long id) {
+        return companyRespository.existsById(id);
+    }
+
+    @Override
+    public CompanyEntity update(Long id, CompanyEntity company) throws Exception {
+        if(!isExist(company.getId())) throw new Exception("it is already exist");
+        return companyRespository.save(company);
+    }
+
+    @Override
+    public void delete(Long id) throws Exception {
+        if(isExist(id)) companyRespository.deleteById(id);
     }
 }

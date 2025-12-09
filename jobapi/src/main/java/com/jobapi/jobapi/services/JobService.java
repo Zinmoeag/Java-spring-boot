@@ -22,7 +22,6 @@ public class JobService implements IJobService {
     @Override
     public JobEntity create(JobEntity jobEntity) {
         JobEntity result = jobRespository.save(jobEntity);
-        System.out.println(result + "result ===>");
         return result;
     }
 
@@ -31,5 +30,25 @@ public class JobService implements IJobService {
         return StreamSupport
                 .stream(jobRespository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public JobEntity findById(Long id) {
+        return jobRespository.findById(id).get();
+    }
+
+    @Override
+    public boolean isExist(Long id) {
+        return jobRespository.existsById(id);
+    }
+
+    @Override
+    public JobEntity update(Long id, JobEntity jobEntity) throws Exception {
+        if(!isExist(id)) throw new Exception("it is already exist");
+        return jobRespository.save(jobEntity);
+    }
+
+    public void delete(Long id) {
+        jobRespository.deleteById(id);
     }
 }
